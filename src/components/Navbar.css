@@ -1,0 +1,60 @@
+/* Deep Navy Background as seen in image */
+.navbar-container {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+  background-color: #101323; 
+  padding: 25px 0;
+  transition: all 0.3s ease;
+}
+
+.navbar-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 40px;
+}
+
+/* Brand Name in specific Coral-Red */
+.brand-logo {
+  font-size: 26px;
+  font-weight: 600;
+  color: #ff4d5a;
+  cursor: pointer;
+  letter-spacing: -0.5px;
+}
+
+.nav-menu {
+  list-style: none;
+  display: flex;
+  gap: 35px;
+  margin: 0;
+  padding: 0;
+}
+
+/* Nav links styling: Small, white, medium weight */
+.nav-item {
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+  color: #ffffff;
+  transition: color 0.3s ease;
+}
+
+/* Hover and Active states using the Red accent */
+.nav-item:hover, 
+.nav-item.active {
+  color: #ffffff;
+  border-bottom: 2px solid #ff4d5a;
+  padding-bottom: 4px;
+}
+
+/* Responsive adjustment */
+@media (max-width: 768px) {
+  .nav-menu {
+    display: none; /* You would typically add a hamburger menu here */
+  }
+}
