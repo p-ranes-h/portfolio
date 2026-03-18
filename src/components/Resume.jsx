@@ -1,6 +1,7 @@
 
 import React from 'react';
 import { useState } from 'react';
+import resumeFile from '../assets/pranesh_s.pdf';
 const useFileDownload = () => {
   const [isDownloading, setIsDownloading] = useState(false);
   const [progress, setProgress] = useState(0);
@@ -48,10 +49,8 @@ const useFileDownload = () => {
 const Resume = () => {
   const { downloadFile, isDownloading, progress } = useFileDownload();
   const downloadCV = () => {
-    // IMPORTANT: Move your PDF to the 'public' folder 
-    // and use '/pranesh_s.pdf' as the URL.
-    const fileUrl = '/pranesh_s.pdf'; 
-    downloadFile(fileUrl, 'Pranesh_S_Resume.pdf');
+    console.log("Downloading resume from path:", resumeFile);
+    downloadFile(resumeFile, 'Pranesh_S_Resume.pdf');
   };
 
   const resumeData = {
