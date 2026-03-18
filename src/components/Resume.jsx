@@ -50,7 +50,7 @@ const Resume = () => {
   const downloadCV = () => {
     // IMPORTANT: Move your PDF to the 'public' folder 
     // and use '/pranesh_s.pdf' as the URL.
-    const fileUrl = 'public/pranesh_s.pdf'; 
+    const fileUrl = '/pranesh_s.pdf'; 
     downloadFile(fileUrl, 'Pranesh_S_Resume.pdf');
   };
 
