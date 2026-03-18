@@ -1,57 +1,58 @@
 
 import React from 'react';
-import { useState } from 'react';
+// import { useState } from 'react';
 import resumeFile from '../assets/pranesh_s.pdf';
-const useFileDownload = () => {
-  const [isDownloading, setIsDownloading] = useState(false);
-  const [progress, setProgress] = useState(0);
+// const useFileDownload = () => {
+//   const [isDownloading, setIsDownloading] = useState(false);
+//   const [progress, setProgress] = useState(0);
 
-  const downloadFile = async (url, filename) => {
-    setIsDownloading(true);
-    setProgress(0);
-    try {
-      const response = await fetch(url);
-      if (!response.ok) throw new Error('Resource not found');
+//   const downloadFile = async (url, filename) => {
+//     setIsDownloading(true);
+//     setProgress(0);
+//     try {
+//       const response = await fetch(url);
+//       if (!response.ok) throw new Error('Resource not found');
 
-      const contentLength = response.headers.get('content-length');
-      const total = parseInt(contentLength, 10);
+//       const contentLength = response.headers.get('content-length');
+//       const total = parseInt(contentLength, 10);
       
-      const reader = response.body.getReader();
-      const chunks = [];
-      let loaded = 0;
+//       const reader = response.body.getReader();
+//       const chunks = [];
+//       let loaded = 0;
 
-      while (true) {
-        const { done, value } = await reader.read();
-        if (done) break;
-        chunks.push(value);
-        loaded += value.length;
-        if (total) setProgress(Math.round((loaded / total) * 100));
-      }
+//       while (true) {
+//         const { done, value } = await reader.read();
+//         if (done) break;
+//         chunks.push(value);
+//         loaded += value.length;
+//         if (total) setProgress(Math.round((loaded / total) * 100));
+//       }
 
-      const blob = new Blob(chunks, { type: 'application/pdf' });
-      const blobUrl = window.URL.createObjectURL(blob);
-      const link = document.createElement('a');
-      link.href = blobUrl;
-      link.download = filename;
-      document.body.appendChild(link);
-      link.click();
-      document.body.removeChild(link);
-      window.URL.revokeObjectURL(blobUrl);
-    } catch (err) {
-      console.error("Download failed:", err);
-    } finally {
-      setIsDownloading(false);
-    }
-  };
+//       const blob = new Blob(chunks, { type: 'application/pdf' });
+//       const blobUrl = window.URL.createObjectURL(blob);
+//       const link = document.createElement('a');
+//       link.href = blobUrl;
+//       link.download = filename;
+//       document.body.appendChild(link);
+//       link.click();
+//       document.body.removeChild(link);
+//       window.URL.revokeObjectURL(blobUrl);
+//     } catch (err) {
+//       console.error("Download failed:", err);
+//     } finally {
+//       setIsDownloading(false);
+//     }
+//   };
 
-  return { downloadFile, isDownloading, progress };
-};
+//   return { downloadFile, isDownloading, progress };
+// };
 const Resume = () => {
-  const { downloadFile, isDownloading, progress } = useFileDownload();
-  const downloadCV = () => {
-    console.log("Downloading resume from path:", resumeFile);
-    downloadFile(resumeFile, 'Pranesh_S_Resume.pdf');
-  };
+  //testing
+  // const { downloadFile, isDownloading, progress } = useFileDownload();
+  // const downloadCV = () => {
+  //   console.log("Downloading resume from path:", resumeFile);
+  //   downloadFile(resumeFile, 'Pranesh_S_Resume.pdf');
+  // };
 
   const resumeData = {
     name: "PRANESH S",
@@ -200,13 +201,20 @@ const Resume = () => {
               Pranesh S • Senior Software Developer
             </p>
           </div>
-          <button 
+          {/* <button 
             onClick={downloadCV}
             className="btn-primary"
             disabled={isDownloading}
           >
             {isDownloading ? `Downloading ${progress}%...` : 'Download PDF'}
-          </button>
+          </button> */}
+          <a 
+            href={resumeFile} 
+            download="Pranesh_S_Resume.pdf" 
+            className="btn-primary inline-block text-center"
+          >
+            Download PDF
+          </a>
           
         </div>
 
